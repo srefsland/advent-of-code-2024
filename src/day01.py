@@ -22,8 +22,8 @@ def part2(input_data):
 
 
 def main():
-    test_input = "data/day01/test_input_part1.txt"
-    input_data = "data/day01/input_part1.txt"
+    test_input = "data/day01/test_input.txt"
+    input_data = "data/day01/input.txt"
 
     # Tests
     print(f"Test input part 1: {part1(test_input)}")
