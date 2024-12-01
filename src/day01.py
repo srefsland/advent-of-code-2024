@@ -13,7 +13,7 @@ def part1(input_data):
 def part2(input_data):
     data = read_data(input_data)
 
-    left_list, right_list = map(sorted, zip(*(map(int, line.split()) for line in data)))
+    left_list, right_list = zip(*(map(int, line.split()) for line in data))
     sim_score = sum(
         left_entry * right_list.count(left_entry) for left_entry in left_list
     )
