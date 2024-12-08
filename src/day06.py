@@ -1,6 +1,6 @@
-import pickle
 from enum import Enum
 
+from utils.bounds import out_of_bounds
 from utils.read_data import read_data
 
 
@@ -29,11 +29,6 @@ def get_next_position(current_position, current_direction):
 def get_next_direction(current_direction):
     current_index = DIRECTIONS.index(current_direction)
     return DIRECTIONS[(current_index + 1) % len(DIRECTIONS)]
-
-
-def out_of_bounds(data, position):
-    i, j = position
-    return i < 0 or j < 0 or i >= len(data) or j >= len(data[i])
 
 
 def find_starting_point(data):
