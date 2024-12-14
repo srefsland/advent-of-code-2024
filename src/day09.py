@@ -16,7 +16,7 @@ def swap(arr, i, j):
     arr[j] = temp
 
 
-def init_file_blocks(data, include_indices=False):
+def init_file_blocks(data):
     file_blocks = []
     file_id_indices = []
     free_space_indices = []
@@ -36,19 +36,16 @@ def init_file_blocks(data, include_indices=False):
                 )
                 file_blocks.extend(["." for _ in range(int(num))])
 
-    if include_indices:
-        return file_blocks, file_id_indices, free_space_indices
-    else:
-        return file_blocks
+    return file_blocks, file_id_indices, free_space_indices
 
 
 def part1(input_data):
     data = read_data(input_data)[0]
 
-    file_blocks, _, _ = init_file_blocks(data)
+    file_blocks, file_id_indices, free_space_indices = init_file_blocks(data)
 
-    free_indices = [i for i, x in enumerate(file_blocks) if x == "."]
-    file_indices = [i for i, x in enumerate(file_blocks) if x != "."]
+    free_indices = [i for sublist in free_space_indices for i in sublist]
+    file_indices = [i for sublist in file_id_indices for i in sublist]
 
     while free_indices[0] < file_indices[-1]:
         num_index = file_indices.pop()
