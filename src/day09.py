@@ -1,4 +1,5 @@
 from utils.read_data import read_data
+from utils.swap import swap
 
 
 def compute_checksum(file_blocks):
@@ -8,12 +9,6 @@ def compute_checksum(file_blocks):
         checksum += int(file_blocks[i]) * i
 
     return checksum
-
-
-def swap(arr, i, j):
-    temp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = temp
 
 
 def init_file_blocks(data):
