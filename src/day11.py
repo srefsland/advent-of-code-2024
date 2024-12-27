@@ -8,6 +8,7 @@ def blink(stone, num_blinks):
         return 1
 
     if (stone, num_blinks) in stone_lookup_table:
+        # Use lookup table to avoid recalculating the same stone given the same number of blinks
         return stone_lookup_table[(stone, num_blinks)]
 
     if stone == 0:
@@ -17,7 +18,9 @@ def blink(stone, num_blinks):
         left_stone = int(str(stone)[: len(str(stone)) // 2])
         right_stone = int(str(stone)[len(str(stone)) // 2 :])
 
-        num_stones = blink(left_stone, num_blinks - 1) + blink(right_stone, num_blinks - 1)
+        num_stones = blink(left_stone, num_blinks - 1) + blink(
+            right_stone, num_blinks - 1
+        )
     else:
         new_stone = stone * 2024
 
